@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{FD87A2DF-C31A-4089-BB71-1693AB7D0607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{D3794DC1-ADFB-4BA1-86B8-789280DD1119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistencia\Persistencia.csproj", "{5B70B466-CCD4-4F1D-B2B6-4448BFFC1964}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD87A2DF-C31A-4089-BB71-1693AB7D0607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD87A2DF-C31A-4089-BB71-1693AB7D0607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD87A2DF-C31A-4089-BB71-1693AB7D0607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD87A2DF-C31A-4089-BB71-1693AB7D0607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3794DC1-ADFB-4BA1-86B8-789280DD1119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3794DC1-ADFB-4BA1-86B8-789280DD1119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3794DC1-ADFB-4BA1-86B8-789280DD1119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3794DC1-ADFB-4BA1-86B8-789280DD1119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B70B466-CCD4-4F1D-B2B6-4448BFFC1964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B70B466-CCD4-4F1D-B2B6-4448BFFC1964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B70B466-CCD4-4F1D-B2B6-4448BFFC1964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B70B466-CCD4-4F1D-B2B6-4448BFFC1964}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C766A81-BE73-4A86-AF1F-AD99919EF7D2}
+	EndGlobalSection
+EndGlobal

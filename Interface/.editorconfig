@@ -1,0 +1,19 @@
+﻿[*.cs]
+
+# CA2007: Considere chamar ConfigureAwait na tarefa esperada
+dotnet_diagnostic.CA2007.severity = none
+
+# IDE0058: O valor da expressão nunca é usado
+csharp_style_unused_value_expression_statement_preference = discard_variable:none
+
+# CA1303: Não passar literais como parâmetros localizados
+dotnet_diagnostic.CA1303.severity = none
+
+# CA1305: Especificar IFormatProvider
+dotnet_diagnostic.CA1305.severity = none
+
+# CA1031: Não capturar exceptions de tipos genéricos
+dotnet_diagnostic.CA1031.severity = none
+
+# CA1062: Validar argumentos de métodos públicos
+dotnet_diagnostic.CA1062.severity = none
