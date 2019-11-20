@@ -34,7 +34,6 @@
             this.txtBlue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCarregarDiferenciador = new System.Windows.Forms.Button();
-            this.pgbCapturas = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
             this.btnIniciarCapturas = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.pnlArmazenamento = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnVerHistorico = new System.Windows.Forms.Button();
+            this.cpbCapturas = new CircularProgressBar.CircularProgressBar();
             this.pnlAnalise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTempo)).BeginInit();
@@ -64,10 +64,10 @@
             // 
             // pnlAnalise
             // 
+            this.pnlAnalise.Controls.Add(this.cpbCapturas);
             this.pnlAnalise.Controls.Add(this.txtBlue);
             this.pnlAnalise.Controls.Add(this.label1);
             this.pnlAnalise.Controls.Add(this.btnCarregarDiferenciador);
-            this.pnlAnalise.Controls.Add(this.pgbCapturas);
             this.pnlAnalise.Controls.Add(this.label6);
             this.pnlAnalise.Controls.Add(this.btnIniciarCapturas);
             this.pnlAnalise.Controls.Add(this.label5);
@@ -86,16 +86,16 @@
             // 
             // txtBlue
             // 
-            this.txtBlue.Location = new System.Drawing.Point(211, 161);
+            this.txtBlue.Location = new System.Drawing.Point(45, 203);
             this.txtBlue.Name = "txtBlue";
             this.txtBlue.ReadOnly = true;
-            this.txtBlue.Size = new System.Drawing.Size(87, 20);
+            this.txtBlue.Size = new System.Drawing.Size(155, 20);
             this.txtBlue.TabIndex = 99;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 145);
+            this.label1.Location = new System.Drawing.Point(4, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 100;
@@ -103,22 +103,13 @@
             // 
             // btnCarregarDiferenciador
             // 
-            this.btnCarregarDiferenciador.Location = new System.Drawing.Point(3, 25);
+            this.btnCarregarDiferenciador.Location = new System.Drawing.Point(3, 18);
             this.btnCarregarDiferenciador.Name = "btnCarregarDiferenciador";
             this.btnCarregarDiferenciador.Size = new System.Drawing.Size(140, 46);
             this.btnCarregarDiferenciador.TabIndex = 113;
             this.btnCarregarDiferenciador.Text = "Abrir imagem do Diferenciador";
             this.btnCarregarDiferenciador.UseVisualStyleBackColor = true;
             this.btnCarregarDiferenciador.Click += new System.EventHandler(this.BtnCarregarDiferenciador_Click);
-            // 
-            // pgbCapturas
-            // 
-            this.pgbCapturas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.pgbCapturas.Location = new System.Drawing.Point(6, 187);
-            this.pgbCapturas.Name = "pgbCapturas";
-            this.pgbCapturas.Size = new System.Drawing.Size(292, 35);
-            this.pgbCapturas.TabIndex = 112;
-            this.pgbCapturas.Visible = false;
             // 
             // label6
             // 
@@ -133,9 +124,9 @@
             // btnIniciarCapturas
             // 
             this.btnIniciarCapturas.Enabled = false;
-            this.btnIniciarCapturas.Location = new System.Drawing.Point(157, 87);
+            this.btnIniciarCapturas.Location = new System.Drawing.Point(157, 70);
             this.btnIniciarCapturas.Name = "btnIniciarCapturas";
-            this.btnIniciarCapturas.Size = new System.Drawing.Size(141, 46);
+            this.btnIniciarCapturas.Size = new System.Drawing.Size(147, 46);
             this.btnIniciarCapturas.TabIndex = 109;
             this.btnIniciarCapturas.Text = "Iniciar Análise";
             this.btnIniciarCapturas.UseVisualStyleBackColor = true;
@@ -152,7 +143,7 @@
             // 
             // btnObterDiferenciador
             // 
-            this.btnObterDiferenciador.Location = new System.Drawing.Point(3, 87);
+            this.btnObterDiferenciador.Location = new System.Drawing.Point(3, 70);
             this.btnObterDiferenciador.Name = "btnObterDiferenciador";
             this.btnObterDiferenciador.Size = new System.Drawing.Size(140, 46);
             this.btnObterDiferenciador.TabIndex = 98;
@@ -163,7 +154,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 145);
+            this.label3.Location = new System.Drawing.Point(3, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 104;
@@ -187,7 +178,7 @@
             0,
             0});
             this.nudCapturas.Name = "nudCapturas";
-            this.nudCapturas.Size = new System.Drawing.Size(67, 20);
+            this.nudCapturas.Size = new System.Drawing.Size(73, 20);
             this.nudCapturas.TabIndex = 107;
             this.nudCapturas.Value = new decimal(new int[] {
             1,
@@ -197,10 +188,10 @@
             // 
             // txtGreen
             // 
-            this.txtGreen.Location = new System.Drawing.Point(108, 161);
+            this.txtGreen.Location = new System.Drawing.Point(45, 171);
             this.txtGreen.Name = "txtGreen";
             this.txtGreen.ReadOnly = true;
-            this.txtGreen.Size = new System.Drawing.Size(87, 20);
+            this.txtGreen.Size = new System.Drawing.Size(155, 20);
             this.txtGreen.TabIndex = 103;
             // 
             // nudTempo
@@ -212,7 +203,7 @@
             0,
             0});
             this.nudTempo.Name = "nudTempo";
-            this.nudTempo.Size = new System.Drawing.Size(67, 20);
+            this.nudTempo.Size = new System.Drawing.Size(73, 20);
             this.nudTempo.TabIndex = 105;
             this.nudTempo.Value = new decimal(new int[] {
             10,
@@ -223,7 +214,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 145);
+            this.label2.Location = new System.Drawing.Point(4, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 102;
@@ -231,10 +222,10 @@
             // 
             // txtRed
             // 
-            this.txtRed.Location = new System.Drawing.Point(3, 161);
+            this.txtRed.Location = new System.Drawing.Point(45, 135);
             this.txtRed.Name = "txtRed";
             this.txtRed.ReadOnly = true;
-            this.txtRed.Size = new System.Drawing.Size(87, 20);
+            this.txtRed.Size = new System.Drawing.Size(155, 20);
             this.txtRed.TabIndex = 101;
             // 
             // pnlGrafico
@@ -265,6 +256,41 @@
             this.btnVerHistorico.Text = "Ver Histórico de Análises";
             this.btnVerHistorico.UseVisualStyleBackColor = true;
             this.btnVerHistorico.Click += new System.EventHandler(this.BtnVerHistorico_Click);
+            // 
+            // cpbCapturas
+            // 
+            this.cpbCapturas.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpbCapturas.AnimationSpeed = 1500;
+            this.cpbCapturas.BackColor = System.Drawing.Color.Transparent;
+            this.cpbCapturas.Enabled = false;
+            this.cpbCapturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbCapturas.ForeColor = System.Drawing.Color.Black;
+            this.cpbCapturas.InnerColor = System.Drawing.Color.White;
+            this.cpbCapturas.InnerMargin = 2;
+            this.cpbCapturas.InnerWidth = -1;
+            this.cpbCapturas.Location = new System.Drawing.Point(224, 135);
+            this.cpbCapturas.MarqueeAnimationSpeed = 1500;
+            this.cpbCapturas.Name = "cpbCapturas";
+            this.cpbCapturas.OuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.cpbCapturas.OuterMargin = -10;
+            this.cpbCapturas.OuterWidth = 10;
+            this.cpbCapturas.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cpbCapturas.ProgressWidth = 10;
+            this.cpbCapturas.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpbCapturas.Size = new System.Drawing.Size(80, 80);
+            this.cpbCapturas.StartAngle = 270;
+            this.cpbCapturas.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpbCapturas.SubscriptColor = System.Drawing.Color.White;
+            this.cpbCapturas.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpbCapturas.SubscriptText = ".23";
+            this.cpbCapturas.SuperscriptColor = System.Drawing.Color.White;
+            this.cpbCapturas.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpbCapturas.SuperscriptText = "°C";
+            this.cpbCapturas.TabIndex = 0;
+            this.cpbCapturas.Text = "Aguarde...";
+            this.cpbCapturas.TextMargin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.cpbCapturas.Value = 70;
+            this.cpbCapturas.Visible = false;
             // 
             // FormPrincipal
             // 
@@ -308,10 +334,10 @@
         private System.Windows.Forms.TextBox txtRed;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBlue;
-        private System.Windows.Forms.ProgressBar pgbCapturas;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnCarregarDiferenciador;
         private System.Windows.Forms.Button btnVerHistorico;
+        private CircularProgressBar.CircularProgressBar cpbCapturas;
     }
 }
 

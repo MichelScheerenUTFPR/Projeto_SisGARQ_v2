@@ -13,8 +13,6 @@ namespace Interface
         public FormResultados FormResultados { get; set; }
         public FormArmazenamento FormArmazenamento { get; set; }
         public FormHistoricoAnalises FormHistoricoAnalises { get; set; }
-
-        private Thread _threadProgressBar;
         
         public FormPrincipal()
         {
@@ -113,9 +111,7 @@ namespace Interface
                 if (FormWebCam.Retangulo.ValidarAlturaLargura())
                 {
                     PreCondicoes();
-                    InicializarThreadProgressBar();
                     await Task.Run(() => Analise.IniciarAnalise(nudTempo.Value, nudCapturas.Value, FormWebCam.WebCam, FormWebCam.Retangulo.Retangulo));
-                    PararThreadProgressBar();
                     PosCondicoes();
                     FormResultados.AtualizarResultados(Analise);
                 }
@@ -136,7 +132,8 @@ namespace Interface
 
         private void PreCondicoes()
         {
-            pgbCapturas.Visible = true;
+            cpbCapturas.Visible = true;
+            cpbCapturas.Enabled = true;
             AlterarCondicaoBotoes(false);
         }
 
@@ -148,39 +145,11 @@ namespace Interface
             btnCarregarDiferenciador.Enabled = condicao;
         }
 
-        private void InicializarThreadProgressBar()
-        {
-            _threadProgressBar = new Thread(AtualizarProgressBar);
-            _threadProgressBar.Start();
-        }
-
-        private async void AtualizarProgressBar()
-        {
-            int tempoAux = 0, capturasAux = 0;
-            nudTempo.Invoke(new MethodInvoker(delegate { tempoAux = Convert.ToInt32(nudTempo.Value); }));
-            nudCapturas.Invoke(new MethodInvoker(delegate { capturasAux = Convert.ToInt32(nudCapturas.Value); }));
-
-            int incremento = Convert.ToInt32(100 / (capturasAux * tempoAux));
-            TimeSpan delay = TimeSpan.FromMilliseconds(1000 / Convert.ToInt32(capturasAux));
-            for (decimal i = 0; i < capturasAux * tempoAux; i++)
-            {
-                pgbCapturas.Invoke(new MethodInvoker(delegate { pgbCapturas.Increment(incremento); }));
-                await Task.Delay(delay);
-            }
-        }
-
-        private void PararThreadProgressBar()
-        {
-            _threadProgressBar.Abort();
-        }
-
         private void PosCondicoes()
         {
-            pgbCapturas.Visible = false;
-            pgbCapturas.Value = 0;
-            pgbCapturas.Refresh();
+            cpbCapturas.Visible = false;
+            cpbCapturas.Enabled = false;
             AlterarCondicaoBotoes(true);
-            
         }
 
         private async void BtnVerHistorico_Click(object sender, EventArgs e)
@@ -197,7 +166,6 @@ namespace Interface
                     AtualizarTxtDiferenciador();
                     FormResultados.AtualizarResultados(Analise);
                     FormArmazenamento.AtualizarTextBoxBanco(FormHistoricoAnalises.Resultado.Autor, FormHistoricoAnalises.Resultado.Experimento);
-
                 }
                 FormHistoricoAnalises.Dispose();
                 FormHistoricoAnalises = null;
