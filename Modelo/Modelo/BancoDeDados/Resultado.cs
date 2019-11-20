@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmguCV.Modelo.BancoDeDados
+namespace Modelo.Modelo.BancoDeDados
 {
     public class Resultado
     {
@@ -18,7 +18,7 @@ namespace EmguCV.Modelo.BancoDeDados
 
         public virtual Diferenciador Diferenciador { get; set; }
 
-        public virtual IEnumerable<Captura> Capturas { get; set; }
+        public virtual List<Captura> Capturas { get; set; }
 
         public Resultado()
         {

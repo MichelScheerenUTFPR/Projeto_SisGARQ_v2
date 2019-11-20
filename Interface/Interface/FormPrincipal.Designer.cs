@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.pnlWebCam = new System.Windows.Forms.Panel();
             this.pnlAnalise = new System.Windows.Forms.Panel();
+            this.txtBlue = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCarregarDiferenciador = new System.Windows.Forms.Button();
             this.pgbCapturas = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,11 +46,10 @@
             this.nudTempo = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRed = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBlue = new System.Windows.Forms.TextBox();
             this.pnlGrafico = new System.Windows.Forms.Panel();
             this.pnlArmazenamento = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnVerHistorico = new System.Windows.Forms.Button();
             this.pnlAnalise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTempo)).BeginInit();
@@ -82,6 +83,23 @@
             this.pnlAnalise.Name = "pnlAnalise";
             this.pnlAnalise.Size = new System.Drawing.Size(307, 228);
             this.pnlAnalise.TabIndex = 1;
+            // 
+            // txtBlue
+            // 
+            this.txtBlue.Location = new System.Drawing.Point(211, 161);
+            this.txtBlue.Name = "txtBlue";
+            this.txtBlue.ReadOnly = true;
+            this.txtBlue.Size = new System.Drawing.Size(87, 20);
+            this.txtBlue.TabIndex = 99;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(208, 145);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 100;
+            this.label1.Text = "Blue";
             // 
             // btnCarregarDiferenciador
             // 
@@ -219,28 +237,11 @@
             this.txtRed.Size = new System.Drawing.Size(87, 20);
             this.txtRed.TabIndex = 101;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 145);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 100;
-            this.label1.Text = "Blue";
-            // 
-            // txtBlue
-            // 
-            this.txtBlue.Location = new System.Drawing.Point(211, 161);
-            this.txtBlue.Name = "txtBlue";
-            this.txtBlue.ReadOnly = true;
-            this.txtBlue.Size = new System.Drawing.Size(87, 20);
-            this.txtBlue.TabIndex = 99;
-            // 
             // pnlGrafico
             // 
             this.pnlGrafico.Location = new System.Drawing.Point(672, 15);
             this.pnlGrafico.Name = "pnlGrafico";
-            this.pnlGrafico.Size = new System.Drawing.Size(680, 676);
+            this.pnlGrafico.Size = new System.Drawing.Size(680, 640);
             this.pnlGrafico.TabIndex = 2;
             // 
             // pnlArmazenamento
@@ -255,11 +256,22 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // btnVerHistorico
+            // 
+            this.btnVerHistorico.Location = new System.Drawing.Point(1196, 662);
+            this.btnVerHistorico.Name = "btnVerHistorico";
+            this.btnVerHistorico.Size = new System.Drawing.Size(156, 29);
+            this.btnVerHistorico.TabIndex = 4;
+            this.btnVerHistorico.Text = "Ver Histórico de Análises";
+            this.btnVerHistorico.UseVisualStyleBackColor = true;
+            this.btnVerHistorico.Click += new System.EventHandler(this.BtnVerHistorico_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 701);
+            this.Controls.Add(this.btnVerHistorico);
             this.Controls.Add(this.pnlArmazenamento);
             this.Controls.Add(this.pnlGrafico);
             this.Controls.Add(this.pnlAnalise);
@@ -299,6 +311,7 @@
         private System.Windows.Forms.ProgressBar pgbCapturas;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnCarregarDiferenciador;
+        private System.Windows.Forms.Button btnVerHistorico;
     }
 }
 

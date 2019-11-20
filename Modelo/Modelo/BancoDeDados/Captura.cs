@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmguCV.Modelo.BancoDeDados
+namespace Modelo.Modelo.BancoDeDados
 {
     public class Captura
     {

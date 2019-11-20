@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmguCV.Modelo
+namespace Modelo.Modelo
 {
     public static class SalvarImagens
     {

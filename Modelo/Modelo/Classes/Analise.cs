@@ -1,12 +1,13 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
+using Modelo.Modelo.BancoDeDados;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelo
+namespace Modelo.Modelo
 {
     public class Analise
     {
@@ -51,6 +52,41 @@ namespace Modelo
             Sinais.Add(Math.Sqrt(Math.Pow(Capturas[posicao].Blue - Diferenciador.Blue, 2) +
                                  Math.Pow(Capturas[posicao].Green - Diferenciador.Green, 2) +
                                  Math.Pow(Capturas[posicao].Red - Diferenciador.Red, 2)));
+        }
+
+        public void PreencherResultado(Resultado resultado)
+        {
+            Diferenciador = new Bgr()
+            {
+                Blue = resultado.Diferenciador.Blue,
+                Green = resultado.Diferenciador.Green,
+                Red = resultado.Diferenciador.Red
+            };
+            Capturas = new List<Bgr>();
+            Sinais = new List<double>();
+            for (int i = 0; i < resultado.Capturas.Count; i++)
+            {
+                Capturas.Add(new Bgr()
+                {
+                    Blue = resultado.Capturas[i].Blue,
+                    Green = resultado.Capturas[i].Green,
+                    Red = resultado.Capturas[i].Red
+                });
+                Sinais.Add(resultado.Capturas[i].Sinal);
+            }
+            if(ImagemDiferenciador != null)
+            {
+                ImagemDiferenciador.Dispose();
+                ImagemDiferenciador = null;
+            }
+            if(ImagensCapturas != null)
+            {
+                foreach (var item in ImagensCapturas)
+                {
+                    item.Dispose();
+                }
+                ImagensCapturas = null;
+            }
         }
     }
 }

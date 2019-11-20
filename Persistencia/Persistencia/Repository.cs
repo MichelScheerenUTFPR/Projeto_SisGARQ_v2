@@ -1,10 +1,11 @@
-﻿using EmguCV.Modelo.BancoDeDados;
+﻿using Modelo.Modelo.BancoDeDados;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Persistencia.Persistencia
 {
@@ -51,11 +52,29 @@ namespace Persistencia.Persistencia
             }
         }
 
-        public async Task<IEnumerable<Resultado>> GetAll()
+        public async Task<List<Resultado>> GetAll()
         {
             using (_context = new SqLiteContext())
             {
                 return await _context.Resultados.ToListAsync();
+            }
+        }
+
+        public async Task<Resultado> Find(Expression<Func<Resultado, bool>> predicado)
+        {
+            using (_context = new SqLiteContext())
+            {
+                return await _context.Resultados.Where(predicado).Include("Diferenciador").Include("Capturas").FirstOrDefaultAsync();
+            }
+        }
+
+        public async Task Delete(int resultadoID)
+        {
+            using (_context = new SqLiteContext())
+            {
+                Resultado resultado = await _context.Resultados.Where(x => x.ID == resultadoID).FirstOrDefaultAsync();
+                _context.Resultados.Remove(resultado);
+                await _context.SaveChangesAsync();
             }
         }
     }

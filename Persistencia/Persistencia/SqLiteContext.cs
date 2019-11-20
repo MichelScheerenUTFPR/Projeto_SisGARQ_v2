@@ -1,4 +1,4 @@
-﻿using EmguCV.Modelo.BancoDeDados;
+﻿using Modelo.Modelo.BancoDeDados;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;

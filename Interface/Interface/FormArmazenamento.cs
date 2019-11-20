@@ -1,5 +1,5 @@
-﻿using EmguCV.Modelo;
-using EmguCV.Modelo.BancoDeDados;
+﻿using Modelo.Modelo;
+using Modelo.Modelo.BancoDeDados;
 using Modelo;
 using OfficeOpenXml;
 using Persistencia;
@@ -29,7 +29,6 @@ namespace Interface
         {
             InitializeComponent();
             _analise = analise;
-            _capturas = new List<Captura>();
         }
 
         private async void FormArmazenamento_Load(object sender, EventArgs e)
@@ -52,26 +51,35 @@ namespace Interface
         {
             try
             {
-                if (StringInvalida(txtAutor.Text) || StringInvalida(txtDescricao.Text))
+                if (StringInvalida(txtAutor.Text) || StringInvalida(txtExperimento.Text))
                     throw new Exception("Um ou mais campos não foram preenchidos!");
 
-                _repository = new Repository();
-                CriarInstancias();
-                int fk_Resultado;
-
-                await _repository.Save(_resultado);
-                fk_Resultado = await _repository.Last();
-
-                _diferenciador.ResultadoID = fk_Resultado;
-                _capturas.ForEach(x => x.ResultadoID = fk_Resultado);
-
-                await _repository.Save(_diferenciador);
-                await _repository.Save(_capturas);
+                btnSalvarBanco.Enabled = false;
+                await Task.Run(() => SalvarBanco());
+                MessageBox.Show("Análise armazenada!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnSalvarBanco.Enabled = true;
             }
+        }
+
+        private async Task SalvarBanco()
+        {
+            CriarInstancias();
+            _repository = new Repository();
+
+            await _repository.Save(_resultado);
+            int fk_Resultado = await _repository.Last();
+
+            _diferenciador.ResultadoID = fk_Resultado;
+            _capturas.ForEach(x => x.ResultadoID = fk_Resultado);
+
+            await _repository.Save(_diferenciador);
+            await _repository.Save(_capturas);
+
+            btnSalvarBanco.Enabled = false;
         }
 
         private void CriarInstancias()
@@ -79,7 +87,7 @@ namespace Interface
             _resultado = new Resultado()
             {
                 Autor = txtAutor.Text,
-                Experimento = txtDescricao.Text
+                Experimento = txtExperimento.Text
             };
             _diferenciador = new Diferenciador()
             {
@@ -87,6 +95,7 @@ namespace Interface
                 Green = _analise.Diferenciador.Green,
                 Red = _analise.Diferenciador.Red
             };
+            _capturas = new List<Captura>();
             for (int i = 0; i < _analise.Capturas.Count; i++)
             {
                 _capturas.Add(new Captura()
@@ -114,6 +123,10 @@ namespace Interface
                     }
                     if(chbSalvarImagensPC.Checked == true)
                     {
+                        if(_analise.ImagemDiferenciador == null || _analise.ImagensCapturas == null)
+                        {
+                            MessageBox.Show("Essa opção não está disponível para análises do banco de dados!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         await SalvarImagensComputador(caminho);
                     }
                 }
@@ -170,6 +183,13 @@ namespace Interface
             }
             if(salvo)
                 MessageBox.Show("Imagens Salvas!", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+        public void AtualizarTextBoxBanco(string autor, string experimento)
+        {
+            txtAutor.Text = autor;
+            txtExperimento.Text = experimento;
+            btnSalvarExtras.Enabled = true;
         }
     }
 }

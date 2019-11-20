@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNomeArquivo = new System.Windows.Forms.TextBox();
             this.btnSalvarExtras = new System.Windows.Forms.Button();
-            this.txtDescricao = new System.Windows.Forms.RichTextBox();
+            this.txtExperimento = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAutor = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.fbdResultados = new System.Windows.Forms.FolderBrowserDialog();
             this.ttDescSalvar = new System.Windows.Forms.ToolTip(this.components);
+            this.lblBanco = new System.Windows.Forms.Label();
             this.pnlOpcoesArmazenamento.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,11 +60,12 @@
             // 
             // pnlOpcoesArmazenamento
             // 
+            this.pnlOpcoesArmazenamento.Controls.Add(this.lblBanco);
             this.pnlOpcoesArmazenamento.Controls.Add(this.label4);
             this.pnlOpcoesArmazenamento.Controls.Add(this.txtNomeArquivo);
             this.pnlOpcoesArmazenamento.Controls.Add(this.btnSalvarExtras);
             this.pnlOpcoesArmazenamento.Controls.Add(this.btnSalvarBanco);
-            this.pnlOpcoesArmazenamento.Controls.Add(this.txtDescricao);
+            this.pnlOpcoesArmazenamento.Controls.Add(this.txtExperimento);
             this.pnlOpcoesArmazenamento.Controls.Add(this.label2);
             this.pnlOpcoesArmazenamento.Controls.Add(this.label1);
             this.pnlOpcoesArmazenamento.Controls.Add(this.txtAutor);
@@ -101,13 +103,13 @@
             this.btnSalvarExtras.UseVisualStyleBackColor = true;
             this.btnSalvarExtras.Click += new System.EventHandler(this.BtnSalvarExtras_Click);
             // 
-            // txtDescricao
+            // txtExperimento
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(7, 57);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(248, 47);
-            this.txtDescricao.TabIndex = 97;
-            this.txtDescricao.Text = "";
+            this.txtExperimento.Location = new System.Drawing.Point(7, 57);
+            this.txtExperimento.Name = "txtExperimento";
+            this.txtExperimento.Size = new System.Drawing.Size(248, 47);
+            this.txtExperimento.TabIndex = 97;
+            this.txtExperimento.Text = "";
             // 
             // label2
             // 
@@ -178,6 +180,15 @@
             this.label7.TabIndex = 88;
             this.label7.Text = "Opções de Armazenamento";
             // 
+            // lblBanco
+            // 
+            this.lblBanco.AutoSize = true;
+            this.lblBanco.Location = new System.Drawing.Point(258, 107);
+            this.lblBanco.Name = "lblBanco";
+            this.lblBanco.Size = new System.Drawing.Size(35, 13);
+            this.lblBanco.TabIndex = 102;
+            this.lblBanco.Text = "label3";
+            // 
             // FormArmazenamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,10 +219,11 @@
         private System.Windows.Forms.ToolTip ttDescSalvar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAutor;
-        private System.Windows.Forms.RichTextBox txtDescricao;
+        private System.Windows.Forms.RichTextBox txtExperimento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSalvarExtras;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNomeArquivo;
+        private System.Windows.Forms.Label lblBanco;
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 
-namespace Modelo
+namespace Modelo.Modelo
 {
     public class WebCam
     {
