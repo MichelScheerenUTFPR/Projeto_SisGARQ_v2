@@ -19,5 +19,7 @@ namespace Persistencia
         }
 
         public DbSet<Resultado> Resultados { get; set; }
+        public DbSet<Diferenciador> Diferenciadores { get; set; }
+        public DbSet<Captura> Capturas { get; set; }
     }
 }

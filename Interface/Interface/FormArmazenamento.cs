@@ -1,7 +1,9 @@
 ﻿using EmguCV.Modelo;
+using EmguCV.Modelo.BancoDeDados;
 using Modelo;
 using OfficeOpenXml;
 using Persistencia;
+using Persistencia.Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,11 +20,16 @@ namespace Interface
     public partial class FormArmazenamento : Form
     {
         private readonly Analise _analise;
+        private Repository _repository;
+        private Resultado _resultado;
+        private Diferenciador _diferenciador;
+        private List<Captura> _capturas;
         
         public FormArmazenamento(Analise analise)
         {
             InitializeComponent();
             _analise = analise;
+            _capturas = new List<Captura>();
         }
 
         private async void FormArmazenamento_Load(object sender, EventArgs e)
@@ -41,16 +48,54 @@ namespace Interface
             btnSalvarExtras.Enabled = condicao;
         }
 
-        private void BtnSalvarBanco_Click(object sender, EventArgs e)
+        private async void BtnSalvarBanco_Click(object sender, EventArgs e)
         {
             try
             {
                 if (StringInvalida(txtAutor.Text) || StringInvalida(txtDescricao.Text))
                     throw new Exception("Um ou mais campos não foram preenchidos!");
+
+                _repository = new Repository();
+                CriarInstancias();
+                int fk_Resultado;
+
+                await _repository.Save(_resultado);
+                fk_Resultado = await _repository.Last();
+
+                _diferenciador.ResultadoID = fk_Resultado;
+                _capturas.ForEach(x => x.ResultadoID = fk_Resultado);
+
+                await _repository.Save(_diferenciador);
+                await _repository.Save(_capturas);
             }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void CriarInstancias()
+        {
+            _resultado = new Resultado()
+            {
+                Autor = txtAutor.Text,
+                Experimento = txtDescricao.Text
+            };
+            _diferenciador = new Diferenciador()
+            {
+                Blue = _analise.Diferenciador.Blue,
+                Green = _analise.Diferenciador.Green,
+                Red = _analise.Diferenciador.Red
+            };
+            for (int i = 0; i < _analise.Capturas.Count; i++)
+            {
+                _capturas.Add(new Captura()
+                {
+                    Blue = _analise.Capturas[i].Blue,
+                    Green = _analise.Capturas[i].Green,
+                    Red = _analise.Capturas[i].Red,
+                    Sinal = _analise.Sinais[i]                    
+                });
             }
         }
 
