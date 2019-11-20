@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 
-namespace Modelo
+namespace Modelo.Modelo
 {
     public class WebCam
     {
         public VideoCapture Captura { get; set; }
-
-        public bool WebCamDisponivel { get; set; }
 
         public Mat Matriz { get; private set; }
 
@@ -23,11 +21,10 @@ namespace Modelo
 
         public int WebCamAtual { get; set; }
 
-        public WebCam()
+
+        public void InstanciarWebCamPrincipal()
         {
             Captura = new VideoCapture(0);
-            WebCamDisponivel = false;
-            WebCamAtual = 0;
         }
 
         public void TentarConexao(int indice)
@@ -36,9 +33,10 @@ namespace Modelo
             Captura = new VideoCapture(indice);
         }
 
-        public Bitmap FazerCaptura()
+        public Bitmap FazerCaptura(Size size)
         {
             Matriz = Captura.QueryFrame();
+            CvInvoke.Resize(Matriz, Matriz, size);
             return Matriz.Bitmap;
         }
 

@@ -1,4 +1,4 @@
-﻿using Modelo;
+﻿using Modelo.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,67 +20,77 @@ namespace Interface
         public FormWebCam()
         {
             InitializeComponent();
-            Retangulo = new DesenharRetangulo();
-            InicializarWebCam();
-            TestarOutrasCameras();
+            WebCam = new WebCam();
+            AtualizarListaWebCams();
         }
 
-        public void InicializarWebCam()
+        private void FormWebCam_Load(object sender, EventArgs e)
         {
-            WebCam = new WebCam();
+            Retangulo = new DesenharRetangulo();
+        }
+
+        public void AtualizarListaWebCams()
+        {
+            try
+            {
+                btnAtualizarWebCams.Enabled = false;
+                WebCam.InstanciarWebCamPrincipal();
+                WebCam.WebCamAtual = 0;
+                menuWebCam.Items.Clear();
+                menuWebCam.Items.Add("WebCam 1");
+                List<int> cameras = WebCam.TestarOutrasCameras();
+                for (int i = 0; i < cameras.Count && i < 6; i++)
+                {
+                    menuWebCam.Items.Add("WebCam " + (i + 2));
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                InicializarThreadWebCam();
+                btnAtualizarWebCams.Enabled = true;
+            }
+        }
+
+        public void InicializarThreadWebCam()
+        {
             WebCam.WebCamThread = new Thread(ExibirImagemWebCam) { Priority = ThreadPriority.Highest };
             WebCam.WebCamThread.Start();
         }
 
-        private async void ExibirImagemWebCam()
+        private void ExibirImagemWebCam()
         {
             while (true)
             {
                 try
                 {
-                    pbWebCam.Image = WebCam.FazerCaptura();
-                    if (!WebCam.WebCamDisponivel)
-                        WebCam.WebCamDisponivel = true;
+                    pbWebCam.Image = WebCam.FazerCaptura(pbWebCam.Size);
                 }
                 catch (Exception)
                 {
-                    WebCam.WebCamDisponivel = false;
-                    await WebCamIndisponivel();
                 }
             }
         }
 
-        private async Task WebCamIndisponivel()
-        {
-            try
-            {
-                Image image = Image.FromFile(@"..\..\..\Persistencia\Imagens\WebCamNotFound.jpg");
-                Bitmap bitmap = new Bitmap(image, pbWebCam.Size);
-                pbWebCam.Image = bitmap;
-                await Task.Delay(3000);
-                WebCam.TentarConexao(WebCam.WebCamAtual);
-            }
-            catch (Exception)
-            {
-                await Task.Delay(5000);
-                WebCam.TentarConexao(WebCam.WebCamAtual);
-            }
-        }
-
-        public void TestarOutrasCameras()
-        {
-            menuWebCam.Items.Clear();
-            menuWebCam.Items.Add("WebCam 1");
-            List<int> cameras = WebCam.TestarOutrasCameras();
-            for (int i = 0; i < cameras.Count && i < 6; i++)
-            {
-                menuWebCam.Items.Add("WebCam " + (i + 2));
-            }
-        }
+        //private void WebCamIndisponivel()
+        //{
+        //    try
+        //    {
+        //        Image image = Image.FromFile(@"..\..\..\Persistencia\Imagens\WebCamNotFound.jpg");
+        //        Bitmap bitmap = new Bitmap(image, pbWebCam.Size);
+        //        pbWebCam.Image = bitmap;
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
 
         private void BtnAtualizarWebCams_Click(object sender, EventArgs e)
         {
-            TestarOutrasCameras();
+            PararThreadWebCam();
+            AtualizarListaWebCams();
         }
 
         private async void MenuWebCam_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

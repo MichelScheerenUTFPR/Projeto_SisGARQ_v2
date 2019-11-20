@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using Modelo.Modelo.BancoDeDados;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,9 @@ namespace Persistencia
             var connection = new SqliteConnection(connectionStringBuilder);
             optionsBuilder.UseSqlite(connection);
         }
+
+        public DbSet<Resultado> Resultados { get; set; }
+        public DbSet<Diferenciador> Diferenciadores { get; set; }
+        public DbSet<Captura> Capturas { get; set; }
     }
 }

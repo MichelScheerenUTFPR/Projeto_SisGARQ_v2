@@ -60,7 +60,7 @@
             // 
             this.menuWebCam.Location = new System.Drawing.Point(0, 0);
             this.menuWebCam.Name = "menuWebCam";
-            this.menuWebCam.Size = new System.Drawing.Size(640, 24);
+            this.menuWebCam.Size = new System.Drawing.Size(654, 24);
             this.menuWebCam.TabIndex = 0;
             this.menuWebCam.Text = "menuStrip1";
             this.menuWebCam.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuWebCam_ItemClicked);
@@ -75,14 +75,14 @@
             this.pnlInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlInferior.Location = new System.Drawing.Point(0, 415);
             this.pnlInferior.Name = "pnlInferior";
-            this.pnlInferior.Size = new System.Drawing.Size(640, 25);
+            this.pnlInferior.Size = new System.Drawing.Size(654, 25);
             this.pnlInferior.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtDesenhado);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(426, 0);
+            this.panel1.Location = new System.Drawing.Point(440, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(214, 25);
             this.panel1.TabIndex = 4;
@@ -233,7 +233,7 @@
             this.pbWebCam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbWebCam.Location = new System.Drawing.Point(0, 24);
             this.pbWebCam.Name = "pbWebCam";
-            this.pbWebCam.Size = new System.Drawing.Size(640, 391);
+            this.pbWebCam.Size = new System.Drawing.Size(654, 391);
             this.pbWebCam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbWebCam.TabIndex = 3;
             this.pbWebCam.TabStop = false;
@@ -250,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 440);
+            this.ClientSize = new System.Drawing.Size(654, 440);
             this.Controls.Add(this.btnAtualizarWebCams);
             this.Controls.Add(this.pbWebCam);
             this.Controls.Add(this.pnlInferior);
@@ -261,6 +261,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWebCam_FormClosing);
+            this.Load += new System.EventHandler(this.FormWebCam_Load);
             this.pnlInferior.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

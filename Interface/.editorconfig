@@ -17,3 +17,6 @@ dotnet_diagnostic.CA1031.severity = none
 
 # CA1062: Validar argumentos de métodos públicos
 dotnet_diagnostic.CA1062.severity = none
+
+# IDE0022: Usar o corpo do bloco para métodos
+csharp_style_expression_bodied_methods = false:none

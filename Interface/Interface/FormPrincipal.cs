@@ -1,4 +1,4 @@
-﻿using Modelo;
+﻿using Modelo.Modelo;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +12,7 @@ namespace Interface
         public FormWebCam FormWebCam { get; set; }
         public FormResultados FormResultados { get; set; }
         public FormArmazenamento FormArmazenamento { get; set; }
+        public FormHistoricoAnalises FormHistoricoAnalises { get; set; }
 
         private Thread _threadProgressBar;
         
@@ -38,6 +39,7 @@ namespace Interface
             FormWebCam.Close();
             FormResultados.Close();
             FormArmazenamento.Close();
+            this.Dispose();
         }
 
         private void BtnObterDiferenciador_Click(object sender, EventArgs e)
@@ -51,7 +53,7 @@ namespace Interface
                     AtualizarTxtDiferenciador();
                     if (FormWebCam.ThreadDesligada())
                     {
-                        FormWebCam.InicializarWebCam();
+                        FormWebCam.AtualizarListaWebCams();
                         btnCarregarDiferenciador.Text = "Carregar Imagem para o Diferenciador";
                     }
                 }
@@ -90,7 +92,7 @@ namespace Interface
                 }
                 else
                 {
-                    FormWebCam.InicializarWebCam();
+                    FormWebCam.AtualizarListaWebCams();
                     btnCarregarDiferenciador.Text = "Carregar Imagem para o Diferenciador";
                 }
             }
@@ -129,8 +131,7 @@ namespace Interface
             finally
             {
                 PosCondicoes();
-            }
-            
+            }  
         }
 
         private void PreCondicoes()
@@ -176,11 +177,35 @@ namespace Interface
         private void PosCondicoes()
         {
             pgbCapturas.Visible = false;
-            FormArmazenamento.AtualizarDefinicaoSalvamento(false);
             pgbCapturas.Value = 0;
             pgbCapturas.Refresh();
             AlterarCondicaoBotoes(true);
             
+        }
+
+        private async void BtnVerHistorico_Click(object sender, EventArgs e)
+        {
+            if(FormHistoricoAnalises == null)
+            {
+                FormHistoricoAnalises = new FormHistoricoAnalises();
+                await FormHistoricoAnalises.PreencherDataGrid();
+                FormHistoricoAnalises.ShowDialog();
+
+                if (FormHistoricoAnalises.Resultado != null)
+                {
+                    Analise.PreencherResultado(FormHistoricoAnalises.Resultado);
+                    AtualizarTxtDiferenciador();
+                    FormResultados.AtualizarResultados(Analise);
+                    FormArmazenamento.AtualizarTextBoxBanco(FormHistoricoAnalises.Resultado.Autor, FormHistoricoAnalises.Resultado.Experimento);
+
+                }
+                FormHistoricoAnalises.Dispose();
+                FormHistoricoAnalises = null;
+            }
+            else
+            {
+                FormHistoricoAnalises.ShowDialog();
+            }
         }
     }
 }
