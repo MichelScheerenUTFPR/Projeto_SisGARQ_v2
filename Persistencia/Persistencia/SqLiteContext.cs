@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using EmguCV.Modelo.BancoDeDados;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace Persistencia
             var connection = new SqliteConnection(connectionStringBuilder);
             optionsBuilder.UseSqlite(connection);
         }
+
+        public DbSet<Resultado> Resultados { get; set; }
     }
 }

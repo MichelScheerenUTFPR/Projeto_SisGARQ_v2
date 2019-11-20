@@ -15,19 +15,16 @@ namespace Modelo
     {
         public VideoCapture Captura { get; set; }
 
-        public bool WebCamDisponivel { get; set; }
-
         public Mat Matriz { get; private set; }
 
         public Thread WebCamThread { get; set; }
 
         public int WebCamAtual { get; set; }
 
-        public WebCam()
+
+        public void InstanciarWebCamPrincipal()
         {
             Captura = new VideoCapture(0);
-            WebCamDisponivel = false;
-            WebCamAtual = 0;
         }
 
         public void TentarConexao(int indice)
@@ -36,9 +33,10 @@ namespace Modelo
             Captura = new VideoCapture(indice);
         }
 
-        public Bitmap FazerCaptura()
+        public Bitmap FazerCaptura(Size size)
         {
             Matriz = Captura.QueryFrame();
+            CvInvoke.Resize(Matriz, Matriz, size);
             return Matriz.Bitmap;
         }
 

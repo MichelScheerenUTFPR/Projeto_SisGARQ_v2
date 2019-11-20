@@ -11,31 +11,36 @@ namespace Modelo
     public class Analise
     {
         public Bgr Diferenciador { get; set; }
+        public Image<Bgr, byte> ImagemDiferenciador { get; set; }
         public TimeSpan Intervalo { get; set; }
         public int Repetições { get; set; }
-
         public List<Bgr> Capturas { get; set; }
+        public List<Image<Bgr, byte>> ImagensCapturas { get; set; }
         public List<double> Sinais { get; set; }
 
         public void ObterDiferenciador(Image imagem, Rectangle retangulo)
         {
             Bitmap bitmap = new Bitmap(imagem);
-            Image<Bgr, byte> diferenciador = new Image<Bgr, byte>(bitmap);
-            Diferenciador = new Bgr();
-            Diferenciador = diferenciador.GetSubRect(retangulo).GetAverage();
+            ImagemDiferenciador = new Image<Bgr, byte>(bitmap).GetSubRect(retangulo);
+            Diferenciador = ImagemDiferenciador.GetAverage();
             bitmap.Dispose();
-            diferenciador.Dispose();
         }
 
         public async Task IniciarAnalise(decimal tempo, decimal numCapturas, WebCam webCam, Rectangle retangulo)
         {
             Capturas = new List<Bgr>();
             Sinais = new List<double>();
+            ImagensCapturas = new List<Image<Bgr, byte>>();
             Repetições = Convert.ToInt32(tempo * numCapturas);
             Intervalo = TimeSpan.FromMilliseconds(1000 / Convert.ToInt32(numCapturas));
             for (int i = 0; i < Repetições; i++)
             {
-                Capturas.Add(webCam.Matriz.ToImage<Bgr, byte>().GetSubRect(retangulo).GetAverage());
+                lock (webCam)
+                {
+                    ImagensCapturas.Add(webCam.Matriz.ToImage<Bgr, byte>().GetSubRect(retangulo));
+                }
+                
+                Capturas.Add(ImagensCapturas[i].GetAverage());
                 CalcularSinal(i);
                 await Task.Delay(Intervalo);
             }

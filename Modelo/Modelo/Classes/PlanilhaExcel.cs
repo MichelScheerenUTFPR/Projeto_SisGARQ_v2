@@ -17,8 +17,9 @@ namespace Modelo
             Excel = new ExcelPackage();
         }
 
-        public void GerarPlanilha(Analise analise, string local)
+        public void GerarPlanilha(Analise analise, string caminho)
         {
+            caminho = caminho + " .xlsx";
             List<object[]> dados = new List<object[]>();
             for (int i = 0; i < analise.Sinais.Count; i++)
             {
@@ -33,7 +34,7 @@ namespace Modelo
             workSheet.Cells[tamanhoCabecalho].LoadFromArrays(linhaCabecalho);
             workSheet.Cells[2, 1].LoadFromArrays(dados);
 
-            FileInfo excelFile = new FileInfo(local);
+            FileInfo excelFile = new FileInfo(caminho);
             Excel.SaveAs(excelFile);
         }
     }

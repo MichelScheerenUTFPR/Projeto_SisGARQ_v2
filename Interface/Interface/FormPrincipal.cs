@@ -38,6 +38,7 @@ namespace Interface
             FormWebCam.Close();
             FormResultados.Close();
             FormArmazenamento.Close();
+            this.Dispose();
         }
 
         private void BtnObterDiferenciador_Click(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace Interface
                     AtualizarTxtDiferenciador();
                     if (FormWebCam.ThreadDesligada())
                     {
-                        FormWebCam.InicializarWebCam();
+                        FormWebCam.AtualizarListaWebCams();
                         btnCarregarDiferenciador.Text = "Carregar Imagem para o Diferenciador";
                     }
                 }
@@ -90,7 +91,7 @@ namespace Interface
                 }
                 else
                 {
-                    FormWebCam.InicializarWebCam();
+                    FormWebCam.AtualizarListaWebCams();
                     btnCarregarDiferenciador.Text = "Carregar Imagem para o Diferenciador";
                 }
             }
@@ -176,7 +177,6 @@ namespace Interface
         private void PosCondicoes()
         {
             pgbCapturas.Visible = false;
-            FormArmazenamento.AtualizarDefinicaoSalvamento(false);
             pgbCapturas.Value = 0;
             pgbCapturas.Refresh();
             AlterarCondicaoBotoes(true);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmguCV.Modelo.BancoDeDados;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,11 @@ namespace Persistencia.Persistencia
     {
         private SqLiteContext _context;
 
-        public async Task Save(T obj)
+        public async Task Save(Resultado resultado)
         {
             using (_context = new SqLiteContext())
             {
-                _context.Set<T>().Add(obj);
+                _context.Resultados.Add(resultado);
                 await _context.SaveChangesAsync();
             }
         }

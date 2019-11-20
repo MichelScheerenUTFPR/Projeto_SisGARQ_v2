@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pnlWebCam = new System.Windows.Forms.Panel();
             this.pnlAnalise = new System.Windows.Forms.Panel();
+            this.btnCarregarDiferenciador = new System.Windows.Forms.Button();
             this.pgbCapturas = new System.Windows.Forms.ProgressBar();
             this.label6 = new System.Windows.Forms.Label();
             this.btnIniciarCapturas = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.pnlGrafico = new System.Windows.Forms.Panel();
             this.pnlArmazenamento = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnCarregarDiferenciador = new System.Windows.Forms.Button();
             this.pnlAnalise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCapturas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTempo)).BeginInit();
@@ -58,11 +58,13 @@
             // 
             this.pnlWebCam.Location = new System.Drawing.Point(12, 15);
             this.pnlWebCam.Name = "pnlWebCam";
-            this.pnlWebCam.Size = new System.Drawing.Size(640, 440);
+            this.pnlWebCam.Size = new System.Drawing.Size(654, 440);
             this.pnlWebCam.TabIndex = 0;
             // 
             // pnlAnalise
             // 
+            this.pnlAnalise.Controls.Add(this.txtBlue);
+            this.pnlAnalise.Controls.Add(this.label1);
             this.pnlAnalise.Controls.Add(this.btnCarregarDiferenciador);
             this.pnlAnalise.Controls.Add(this.pgbCapturas);
             this.pnlAnalise.Controls.Add(this.label6);
@@ -76,19 +78,27 @@
             this.pnlAnalise.Controls.Add(this.nudTempo);
             this.pnlAnalise.Controls.Add(this.label2);
             this.pnlAnalise.Controls.Add(this.txtRed);
-            this.pnlAnalise.Controls.Add(this.label1);
-            this.pnlAnalise.Controls.Add(this.txtBlue);
             this.pnlAnalise.Location = new System.Drawing.Point(12, 461);
             this.pnlAnalise.Name = "pnlAnalise";
-            this.pnlAnalise.Size = new System.Drawing.Size(362, 228);
+            this.pnlAnalise.Size = new System.Drawing.Size(307, 228);
             this.pnlAnalise.TabIndex = 1;
+            // 
+            // btnCarregarDiferenciador
+            // 
+            this.btnCarregarDiferenciador.Location = new System.Drawing.Point(3, 25);
+            this.btnCarregarDiferenciador.Name = "btnCarregarDiferenciador";
+            this.btnCarregarDiferenciador.Size = new System.Drawing.Size(140, 46);
+            this.btnCarregarDiferenciador.TabIndex = 113;
+            this.btnCarregarDiferenciador.Text = "Abrir imagem do Diferenciador";
+            this.btnCarregarDiferenciador.UseVisualStyleBackColor = true;
+            this.btnCarregarDiferenciador.Click += new System.EventHandler(this.BtnCarregarDiferenciador_Click);
             // 
             // pgbCapturas
             // 
             this.pgbCapturas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.pgbCapturas.Location = new System.Drawing.Point(28, 184);
+            this.pgbCapturas.Location = new System.Drawing.Point(6, 187);
             this.pgbCapturas.Name = "pgbCapturas";
-            this.pgbCapturas.Size = new System.Drawing.Size(314, 41);
+            this.pgbCapturas.Size = new System.Drawing.Size(292, 35);
             this.pgbCapturas.TabIndex = 112;
             this.pgbCapturas.Visible = false;
             // 
@@ -96,7 +106,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 16);
             this.label6.TabIndex = 111;
@@ -105,7 +115,7 @@
             // btnIniciarCapturas
             // 
             this.btnIniciarCapturas.Enabled = false;
-            this.btnIniciarCapturas.Location = new System.Drawing.Point(201, 84);
+            this.btnIniciarCapturas.Location = new System.Drawing.Point(157, 87);
             this.btnIniciarCapturas.Name = "btnIniciarCapturas";
             this.btnIniciarCapturas.Size = new System.Drawing.Size(141, 46);
             this.btnIniciarCapturas.TabIndex = 109;
@@ -116,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(198, 61);
+            this.label5.Location = new System.Drawing.Point(154, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 108;
@@ -124,7 +134,7 @@
             // 
             // btnObterDiferenciador
             // 
-            this.btnObterDiferenciador.Location = new System.Drawing.Point(28, 84);
+            this.btnObterDiferenciador.Location = new System.Drawing.Point(3, 87);
             this.btnObterDiferenciador.Name = "btnObterDiferenciador";
             this.btnObterDiferenciador.Size = new System.Drawing.Size(140, 46);
             this.btnObterDiferenciador.TabIndex = 98;
@@ -135,7 +145,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(135, 140);
+            this.label3.Location = new System.Drawing.Point(108, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 104;
@@ -144,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 35);
+            this.label4.Location = new System.Drawing.Point(159, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 106;
@@ -152,7 +162,7 @@
             // 
             // nudCapturas
             // 
-            this.nudCapturas.Location = new System.Drawing.Point(275, 54);
+            this.nudCapturas.Location = new System.Drawing.Point(231, 44);
             this.nudCapturas.Minimum = new decimal(new int[] {
             1,
             0,
@@ -169,15 +179,15 @@
             // 
             // txtGreen
             // 
-            this.txtGreen.Location = new System.Drawing.Point(138, 156);
+            this.txtGreen.Location = new System.Drawing.Point(108, 161);
             this.txtGreen.Name = "txtGreen";
             this.txtGreen.ReadOnly = true;
-            this.txtGreen.Size = new System.Drawing.Size(97, 20);
+            this.txtGreen.Size = new System.Drawing.Size(87, 20);
             this.txtGreen.TabIndex = 103;
             // 
             // nudTempo
             // 
-            this.nudTempo.Location = new System.Drawing.Point(275, 28);
+            this.nudTempo.Location = new System.Drawing.Point(231, 18);
             this.nudTempo.Minimum = new decimal(new int[] {
             1,
             0,
@@ -187,7 +197,7 @@
             this.nudTempo.Size = new System.Drawing.Size(67, 20);
             this.nudTempo.TabIndex = 105;
             this.nudTempo.Value = new decimal(new int[] {
-            4,
+            10,
             0,
             0,
             0});
@@ -195,7 +205,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 140);
+            this.label2.Location = new System.Drawing.Point(0, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 102;
@@ -203,16 +213,16 @@
             // 
             // txtRed
             // 
-            this.txtRed.Location = new System.Drawing.Point(245, 156);
+            this.txtRed.Location = new System.Drawing.Point(3, 161);
             this.txtRed.Name = "txtRed";
             this.txtRed.ReadOnly = true;
-            this.txtRed.Size = new System.Drawing.Size(97, 20);
+            this.txtRed.Size = new System.Drawing.Size(87, 20);
             this.txtRed.TabIndex = 101;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 140);
+            this.label1.Location = new System.Drawing.Point(208, 145);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 100;
@@ -220,10 +230,10 @@
             // 
             // txtBlue
             // 
-            this.txtBlue.Location = new System.Drawing.Point(28, 156);
+            this.txtBlue.Location = new System.Drawing.Point(211, 161);
             this.txtBlue.Name = "txtBlue";
             this.txtBlue.ReadOnly = true;
-            this.txtBlue.Size = new System.Drawing.Size(97, 20);
+            this.txtBlue.Size = new System.Drawing.Size(87, 20);
             this.txtBlue.TabIndex = 99;
             // 
             // pnlGrafico
@@ -235,25 +245,15 @@
             // 
             // pnlArmazenamento
             // 
-            this.pnlArmazenamento.Location = new System.Drawing.Point(380, 461);
+            this.pnlArmazenamento.Location = new System.Drawing.Point(325, 461);
             this.pnlArmazenamento.Name = "pnlArmazenamento";
-            this.pnlArmazenamento.Size = new System.Drawing.Size(272, 230);
+            this.pnlArmazenamento.Size = new System.Drawing.Size(341, 230);
             this.pnlArmazenamento.TabIndex = 3;
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // btnCarregarDiferenciador
-            // 
-            this.btnCarregarDiferenciador.Location = new System.Drawing.Point(31, 28);
-            this.btnCarregarDiferenciador.Name = "btnCarregarDiferenciador";
-            this.btnCarregarDiferenciador.Size = new System.Drawing.Size(140, 46);
-            this.btnCarregarDiferenciador.TabIndex = 113;
-            this.btnCarregarDiferenciador.Text = "Carregar Imagem para o Diferenciador";
-            this.btnCarregarDiferenciador.UseVisualStyleBackColor = true;
-            this.btnCarregarDiferenciador.Click += new System.EventHandler(this.BtnCarregarDiferenciador_Click);
             // 
             // FormPrincipal
             // 

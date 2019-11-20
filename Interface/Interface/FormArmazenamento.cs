@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿using EmguCV.Modelo;
+using Modelo;
 using OfficeOpenXml;
 using Persistencia;
 using System;
@@ -16,64 +17,114 @@ namespace Interface
 {
     public partial class FormArmazenamento : Form
     {
-        public bool AnaliseSalva { get; private set; }
-
-        public PlanilhaExcel PlanilhaExcel { get; set; }
-
         private readonly Analise _analise;
         
         public FormArmazenamento(Analise analise)
         {
             InitializeComponent();
             _analise = analise;
-            PlanilhaExcel = new PlanilhaExcel();
         }
 
         private async void FormArmazenamento_Load(object sender, EventArgs e)
         {
-            chbSalvarResultadosBanco.Checked = true;
-            AnaliseSalva = false;
-            btnArmazenamento.Enabled = false;
+            btnSalvarBanco.Enabled = false;
+            btnSalvarExtras.Enabled = false;
             await Task.Run(() => CreateDataBase.Create());
         }
 
-        private void ChbSalvarResultadosBanco_CheckedChanged(object sender, EventArgs e)
+        public void AtualizarBotao(bool condicao)
         {
-            if(chbSalvarResultadosBanco.Checked == false)
-                chbSalvarResultadosBanco.Checked = true;
+            if (condicao == true && _analise.Capturas == null)
+                return;
+
+            btnSalvarBanco.Enabled = condicao;
+            btnSalvarExtras.Enabled = condicao;
         }
 
-        public void AtualizarBotao(bool ativado)
+        private void BtnSalvarBanco_Click(object sender, EventArgs e)
         {
-            btnArmazenamento.Enabled = ativado;
-        }
-
-        public void AtualizarDefinicaoSalvamento(bool salvo)
-        {
-            AnaliseSalva = salvo;
-        }
-
-        private void BtnArmazenamento_Click(object sender, EventArgs e)
-        {
-            if(AnaliseSalva == false)
+            try
             {
-                AtualizarDefinicaoSalvamento(true);
+                if (StringInvalida(txtAutor.Text) || StringInvalida(txtDescricao.Text))
+                    throw new Exception("Um ou mais campos não foram preenchidos!");
             }
-            if(chbSalvarResultadosExcel.Checked == true)
+            catch (Exception erro)
             {
-                if(fbdResultados.ShowDialog() == DialogResult.OK)
+                MessageBox.Show(erro.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private async void BtnSalvarExtras_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (StringInvalida(txtNomeArquivo.Text))
+                    throw new Exception("Nome do arquivo inválido!");
+                if (fbdResultados.ShowDialog() == DialogResult.OK)
                 {
-                    string arquivo = fbdResultados.SelectedPath + "\\teste1.xlsx";
-                    if (!File.Exists(arquivo))
+                    string caminho = fbdResultados.SelectedPath + "\\" + txtNomeArquivo.Text;
+                    if (chbSalvarResultadosExcel.Checked == true)
                     {
-                        PlanilhaExcel.GerarPlanilha(_analise, arquivo);
+                        await SalvarExcel(caminho);
                     }
-                    else if (MessageBox.Show("Um arquivo com esse nome já existe. Deseja sobrescrevê-lo?", "Aviso", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    if(chbSalvarImagensPC.Checked == true)
                     {
-                        PlanilhaExcel.GerarPlanilha(_analise, arquivo);
+                        await SalvarImagensComputador(caminho);
                     }
                 }
             }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private static bool StringInvalida(string texto)
+        {
+            return String.IsNullOrEmpty(texto) || String.IsNullOrWhiteSpace(texto);
+        }
+
+        private async Task SalvarExcel(string caminho)
+        {
+            bool salvo = false;
+            PlanilhaExcel planilhaExcel = new PlanilhaExcel();
+            if (!File.Exists(caminho))
+            {
+                await Task.Run(() => planilhaExcel.GerarPlanilha(_analise, caminho));
+                salvo = true;
+            }
+            else if (MessageBox.Show("Um arquivo com esse nome já existe. Deseja sobrescrevê-lo?", "Aviso", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                await Task.Run(() => planilhaExcel.GerarPlanilha(_analise, caminho));
+                salvo = true;
+            }
+            if (salvo)
+                MessageBox.Show("Arquivo Salvo!", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+        private async Task SalvarImagensComputador(string caminho)
+        {
+            bool salvo = false;
+            if (Directory.Exists(caminho))
+            {
+                int num = 1;
+                while (Directory.Exists(caminho + num))
+                {
+                    num++;
+                }
+                caminho += "" + num;
+                Directory.CreateDirectory(caminho);
+                await Task.Run(() => SalvarImagens.Salvar(_analise.ImagemDiferenciador, _analise.ImagensCapturas, caminho));
+                salvo = true;
+            }
+            else
+            {
+                Directory.CreateDirectory(caminho);
+                await Task.Run(() => SalvarImagens.Salvar(_analise.ImagemDiferenciador, _analise.ImagensCapturas, caminho));
+                salvo = true;
+            }
+            if(salvo)
+                MessageBox.Show("Imagens Salvas!", "Info", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }
