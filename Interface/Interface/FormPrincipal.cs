@@ -157,7 +157,7 @@ namespace Interface
             if(FormHistoricoAnalises == null)
             {
                 FormHistoricoAnalises = new FormHistoricoAnalises();
-                await FormHistoricoAnalises.PreencherDataGrid();
+                await Task.Run(() => FormHistoricoAnalises.PreencherDataGrid());
                 FormHistoricoAnalises.ShowDialog();
 
                 if (FormHistoricoAnalises.Resultado != null)

@@ -13,7 +13,7 @@ namespace Persistencia
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionStringBuilder = new SqliteConnectionStringBuilder() { DataSource = "..//..//..//Persistencia//DataBase//SqLiteDataBase.db" }.ToString();
+            string connectionStringBuilder = new SqliteConnectionStringBuilder() { DataSource = /*"..//..//..//Persistencia//DataBase//*/"SqLiteDataBase.db" }.ToString();
             var connection = new SqliteConnection(connectionStringBuilder);
             optionsBuilder.UseSqlite(connection);
         }

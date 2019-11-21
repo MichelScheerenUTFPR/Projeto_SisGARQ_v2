@@ -56,7 +56,7 @@ namespace Persistencia.Persistencia
         {
             using (_context = new SqLiteContext())
             {
-                return await _context.Resultados.ToListAsync();
+                return await _context.Resultados.OrderByDescending(x => x.Data).ToListAsync();
             }
         }
 
