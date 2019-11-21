@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Drawing;
-using System.IO;
 using Emgu.CV;
 using System.Threading.Tasks;
-using Emgu.CV.CvEnum;
-using Emgu.CV.Structure;
 
 namespace Modelo.Modelo
 {

@@ -17,3 +17,6 @@ dotnet_diagnostic.CA2227.severity = none
 
 # CA1814: Prefira matrizes denteadas a matrizes multidimensionais
 dotnet_diagnostic.CA1814.severity = none
+
+# CA2000: Descartar objetos antes de perder o escopo
+dotnet_diagnostic.CA2000.severity = none

@@ -117,6 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCarregarAnálise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAC4AAAAwCAYAAABuZUjcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGdSURBVGhD7de/K8RxHMfx8yOllIVFioVFGRRloBQDRTJY
+        DEQSBoNSBlkMNmVWNvwLjOoms8nCIkkS+f3z+U7q033fXfe97+f7+Vz5POtRuq7P99V17u6bCYVCoZKo
+        EVsJVcF5HfhOqAbOC8NdF4a7Lgx3XRjuujDcdWF4WtVhQLEAbUwcI9DOrkbiyrED7cK2fWEV1irDNuRg
+        7YI2fGIJqbQJ7aJJfWAWqbYGm6/8GybgpGXYGP+CMThtHvK+1AYV4hGD8NIk3qENy+ceffDaOF6hDdTc
+        ohvWOsKdIc4/zDCeoQ01XUO+cQttBeamXUTKwrzIFOLUjweYZ5gu0YY4ySeYecYBIiUdLvVAXhnzHHGB
+        FsTN2XCpEzf4O+cMTSgmp8OldlzhFA3yQJE5Hy61ov73z6LzMtxGYbjr/tfwafhuHeYmdfghcp8kdz6+
+        qsQxzE1yCxlpA+aTxAn2PNiHfAfk7plDpGY8IffJpUJ+oNVCbQZJbg7SIj+bh5C3UZxDO8AHecv0oqAq
+        IL/05M570RP5VOuCzw+IkFEm8wPOS61Aqe+InwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnApagarAnalise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAAwCAYAAACbm8NsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAE9SURBVFhH7ditS0NhFIDxq+CywpqLs6lJ2LQMo6hB/BM0
+        bQqKLIvNJVEs2gSbYDWIWIwWwSJYjAaTTNjAj+cowsvL+165n2x4HvjBduBeDvdeNrZA0/5bQxhFyWEY
+        uTWDZ3zg0+Edh8ilK9xjHnMOO5BFx5F5dzj9eelsAnKFat/vElbANGY9HnFpzUwrkGXqqDpUUMSfjUBu
+        gfkMZOENywhtHa6Ds/CA0LbhOjALLwhNnpWtnDTQn01iMWXy2TSAyB3Dda+T6EC+SiLX08s8YRddYyZu
+        cWTNxAXOrVlqy1xDasOcH6BszcQqlqyZLiN0GV1Gl/lNl/Gly/jSZXzpMr50GV+6jK+eXkb+CmlCTmjO
+        b9CyZuIMJ9Ys9jL7ME+UhlcMInJTsG9JUnuI3RjWsJnQBhYQ63e2pvkLgi9IWnRmrypQ1wAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

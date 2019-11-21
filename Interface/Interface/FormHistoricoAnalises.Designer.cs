@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHistoricoAnalises));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -57,11 +58,13 @@
             // 
             this.btnCarregarAnálise.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCarregarAnálise.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarregarAnálise.Image = ((System.Drawing.Image)(resources.GetObject("btnCarregarAnálise.Image")));
+            this.btnCarregarAnálise.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCarregarAnálise.Location = new System.Drawing.Point(0, 0);
             this.btnCarregarAnálise.Name = "btnCarregarAnálise";
-            this.btnCarregarAnálise.Size = new System.Drawing.Size(576, 54);
+            this.btnCarregarAnálise.Size = new System.Drawing.Size(338, 54);
             this.btnCarregarAnálise.TabIndex = 1;
-            this.btnCarregarAnálise.Text = "Carregar Análise Selecionada";
+            this.btnCarregarAnálise.Text = "         CARREGAR ANÁLISE SELECIONADA";
             this.btnCarregarAnálise.UseVisualStyleBackColor = true;
             this.btnCarregarAnálise.Click += new System.EventHandler(this.BtnCarregarAnálise_Click);
             // 
@@ -70,11 +73,13 @@
             this.btnApagarAnalise.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnApagarAnalise.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApagarAnalise.ForeColor = System.Drawing.Color.Red;
-            this.btnApagarAnalise.Location = new System.Drawing.Point(708, 0);
+            this.btnApagarAnalise.Image = ((System.Drawing.Image)(resources.GetObject("btnApagarAnalise.Image")));
+            this.btnApagarAnalise.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApagarAnalise.Location = new System.Drawing.Point(717, 0);
             this.btnApagarAnalise.Name = "btnApagarAnalise";
-            this.btnApagarAnalise.Size = new System.Drawing.Size(112, 54);
+            this.btnApagarAnalise.Size = new System.Drawing.Size(103, 54);
             this.btnApagarAnalise.TabIndex = 0;
-            this.btnApagarAnalise.Text = "Apagar Análise";
+            this.btnApagarAnalise.Text = "       APAGAR";
             this.btnApagarAnalise.UseVisualStyleBackColor = true;
             this.btnApagarAnalise.Click += new System.EventHandler(this.BtnApagarAnalise_Click);
             // 
